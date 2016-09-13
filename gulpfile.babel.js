@@ -25,18 +25,18 @@ gulp.task('pug', () => {
     .pipe(gulpPug({
       pug: pug
     }))
-    .pipe(gulp.dest('./public/'));
+    .pipe(gulp.dest('./docs/'));
 });
 
 gulp.task('sass', () => {
   gulp.src('./src/sass/style.scss')
     .pipe(plumber())
     .pipe(sass({ importer: compass }))
-    .pipe(gulp.dest('./public/css'));
+    .pipe(gulp.dest('./docs/css'));
 });
 
 gulp.task('serve', () => {
-  gulp.src('public/')
+  gulp.src('docs/')
     .pipe(serve({
       livereload: true,
       open: true

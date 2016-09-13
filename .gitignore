@@ -36,11 +36,7 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
-public/*
-!public/.gitkeep
 
 .DS_Store
 .idea
 .sass-cache
-
-!public/img

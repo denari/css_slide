@@ -1,0 +1,86 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0; }
+
+html {
+  background-color: black; }
+
+body {
+  color: white;
+  font-size: 25px;
+  font-family: Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif; }
+  body a {
+    color: white;
+    text-decoration: none; }
+  body:before {
+    content: "";
+    background-image: url("../img/icon.png");
+    background-size: cover;
+    display: block;
+    position: fixed;
+    z-index: -1;
+    top: -20%;
+    left: -20px;
+    height: 120%;
+    width: 120%;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    filter: blur(5px);
+    opacity: 0.8; }
+
+.page {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 0;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease-out 0s; }
+  .page:first-child {
+    z-index: 1; }
+  .page.debug {
+    opacity: 1; }
+
+a:focus .page {
+  opacity: 1;
+  z-index: 10; }
+
+.zero {
+  opacity: 0;
+  height: 0;
+  width: 0;
+  font-size: 0; }
+
+.wrapper {
+  background: rgba(0, 0, 0, 0.7);
+  height: 450px;
+  width: 800px;
+  box-sizing: border-box;
+  padding: 40px;
+  overflow: scroll; }
+  .wrapper.front {
+    padding-top: 170px;
+    font-size: 30px; }
+  .wrapper.section-title {
+    padding-top: 190px;
+    font-size: 30px;
+    text-align: center; }
+  .wrapper ul {
+    margin: 0 0 20px 30px; }
+  .wrapper li {
+    margin-bottom: 15px; }
+  .wrapper p, .wrapper pre {
+    margin-bottom: 20px; }
+  .wrapper pre code {
+    font-family: "Source Code Pro for Powerline"; }
+
+.content {
+  margin-top: 20px;
+  height: 100%; }
