@@ -11,7 +11,7 @@ html {
 
 body {
   color: white;
-  font-size: 17px;
+  font-size: 25px;
   font-family: Avenir , "Open Sans" , "Helvetica Neue" , Helvetica , Arial , Verdana , Roboto , "游ゴシック" , "Yu Gothic" , "游ゴシック体" , "YuGothic" , "ヒラギノ角ゴ Pro W3" , "Hiragino Kaku Gothic Pro" , "Meiryo UI" , "メイリオ" , Meiryo , "ＭＳ Ｐゴシック" , "MS PGothic" , sans-serif;
   a {
     color: white;
@@ -79,11 +79,22 @@ a:focus .page {
     padding-top: 170px;
     font-size: 30px;
   }
+  &.section-title {
+    padding-top: 190px;
+    font-size: 30px;
+    text-align: center;
+  }
   ul {
     margin: 0 0 20px 30px;
   }
+  li {
+    margin-bottom: 15px;
+  }
   p, pre {
     margin-bottom: 20px;
+  }
+  pre code {
+    font-family: "Source Code Pro for Powerline";
   }
   overflow: scroll;
 }

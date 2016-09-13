@@ -18,6 +18,13 @@ mixin slide_page_with_link(title, url)
           if block
             block
 
+mixin slide_section_title_page(title)
+  a(href='#')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper.section-title
+        h1= title
+
 mixin front_page
   a(href='#')
     span.zero .
@@ -26,17 +33,233 @@ mixin front_page
         h1 みんな大好きCSS
         p by denari
 
+//- ここからスライド
+
 +front_page
 
-+slide_page('タイトル')
++slide_page('最近本を買いました')
   p
-    | これはサンプルページです
+    | ごめんなさい、全然読めてないです…
+    br
+    img(src='http://www.oreilly.co.jp/books/images/picture_large978-4-87311-766-9.jpeg')
+
++slide_page('CSSでいろいろチャレンジ!')
   ul
-    li 一つ目
-    li 二つ目
+    li 割と新しい設計思想に触れてみた
+    li animationに触れてみた
+    li CSSマジシャンになってみた
+
++slide_section_title_page('CSS設計の話')
+
++slide_page('やってみた設計')
+  ul
+    li css modules
+    li atomic design
+
++slide_section_title_page('css modules')
+
++slide_page('css modulesについて')
+  ul
+    li kosen10s/css-animathon
+    li CSSの影響範囲の限定化
+
++slide_page('cssをこんな風に書いて…')
   pre
-    code.html
-      | hello
+    code.stylus.
+      .header
+        display block
+        margin 60px 0
+
+      .title
+        font-size 100px
+        line-height 120px
+        margin-left -10px
+
+      .description
+        font-size 24px
+        margin-bottom 10px
+
++slide_page('js内でimportしてあげると')
+  pre
+    code.jsx.
+      import React from 'react';
+      import styles from '../stylus/app_header.styl'
+      export default class AppHeader extends React.Component {
+        render() {
+          return (
+            &lt;header className={ styles.header }&gt;
+              &lt;h1 className={ styles.title }&gt;CSS Animathon&lt;/h1&gt;
+              &lt;p className={ styles.description }&gt;description here&lt;/p&gt;
+            &lt;/header&gt;
+          );
+        }
+      }
+
++slide_page('css modules 所感')
+  ul
+    li クラスの命名規則がなくて済みそう
+      ul
+        li Good Bye BEM...
+    li コンポーネント指向と相性が良い
+    li 欲を言えばjsx内にcssを書いちゃいたい
+      ul
+        li もしかしたらイケるかも??引き続き案件
+
++slide_section_title_page('atomic design')
+
++slide_page('先に謝ること')
+  ul
+    li 実はコード書いてません
+    li デザインツールsketchを通じて触れました
+  p.
+    atomic designとcss modulesを組み合わせた方式でいろいろやりたかったのですが、
+    残念ながら手が追いつきませんでした🙇
+
++slide_page('atomic designってなによ')
+  p 以下の5つの種類にwebサイトの要素を分解する
+  ul
+    li atoms / 原子 - 「ボタン」ぐらいの粒度
+    li molecules / 分子 - 「検索フォーム」ぐらいの粒度
+    li organisms / 有機体 - 「navigation bar」ぐらいの粒度
+    li templates / テンプレート - その名の通りテンプレート
+    li pages / ページ - 実際のページ
+
++slide_page('試した様子')
+  p.
+    気になる人がいたらまたあとでじっくりお見せします。
+    App Apeを題材にしているよ！
+
++slide_page('やってみた所感')
+  ul
+    li 基本的に保守性は上がりそう
+    li atoms / molecules / organisms の境界の判断が難しい
+    li componentの分け方自体をこれにしたら良さそう
+    li 分類が多すぎてめんどくさい印象
+
++slide_page('sketchとatomic design')
+  p.
+    sketchでatomic designに従った構造のファイルを作成するのも、
+    デザインファイルとしての保守性が上がりそうだった。
+  p.
+    しかしsketchでは各モジュールが状態を持てないため、
+    symbolの数がむやみやたらに増えてしまってめんどくさかった。
+  p.
+    ただし、デザインファイルはimport系の機能が弱いので
+    これを実業務に採用するかは結構怪しい。
+
++slide_section_title_page('animation')
+
++slide_page_with_link('animation', 'http://note.appa.pe/')
+  ul
+    li 主にApp Ape NoteのWebサイト
+    li ボタンを生きてる感じにした
+
++slide_page_with_link('source', 'https://github.com/fuller-inc/chronofile_note_webclient/blob/master/src/sass/mixins.scss')
+  p fuller-inc/hronofile_note_webclient
+
++slide_page('animationの感想')
+  ul
+    li transitionが便利だなあってなった
+    li New App Apeでも使っていきたい
+    li 最終的にこれはデザイナーが触るべきな気もした
+    li プロパティが多いけど見た目に華やかなので根気勝負
+
++slide_section_title_page('CSS魔術')
+
++slide_page('ラジオボタンのスタイル')
+  img(src='img/radio_button.gif')
+
++slide_page('実は...')
+  p.
+    ラジオボタンやチェックボックスは、大きさを変える程度の指定しかCSSではできない。
+    ブラウザ / OS標準のラジオボタン / チェックボックスが表示される。
+
++slide_page('魔術で何とかする')
+  p.
+    擬似セレクタ :before / :after と擬似クラス :checked を使った。
+  pre
+    code.sass.
+      input[type=radio] {
+        position: absolute;
+        transform: scale(1.6);
+        visibility: hidden;
+        top: 2px;
+        &:before {
+          content: '';
+          display: block;
+          visibility: visible;
+          position: absolute;
+          top: -3px;
+          left: -4px;
+          height: 20px;
+          width: 20px;
+          z-index: -2;
+          background-color: $light-gray-color;
+          transform: scale(0.6125);
+        }
+        &:checked:after {
+          content: '';
+          display: block;
+          visibility: visible;
+          position: absolute;
+          top: 2px;
+          left: 1px;
+          height: 10px;
+          width: 10px;
+          z-index: -1;
+          background-color: $dark-gray-color;
+          transform: scale(0.6125);
+        }
+      }
+      &-label {
+        padding-left: 25px;
+      }
+
++slide_page('css魔術所感')
+  ul
+    li 擬似セレクタの便利さ
+    li 誰が保守するんだ問題
+
++slide_section_title_page('One more things')
+
++slide_section_title_page('This slide!!!')
+
++slide_page('CSSを駆使して作ってます')
+  ul
+    li denari/css_slide
+    li JSはほとんど使っていない
+      ul
+        li syntax highlightの部分のみ
+
++slide_page_with_link('動作原理', 'http://denari01.hatenablog.com/')
+  p.
+    そもそも普通のWebサイトでも、tabキーを押すとリンク(anchor)にフォーカスされる。
+  p.
+    そして、押し続けると、次のanchor次のanchor…とフォーカスが移る。
+  p.
+    フォーカスされているanchorには擬似クラス :focus がつく
+
++slide_page('昨日の20時の僕の思いつき')
+  p.
+    これってもしかして、CSSだけでスライドの遷移ができるのでは??
+  ul
+    li anchorの子要素として各ページを配置
+    li anchorの子とはいえ、position: fixedで全画面に広がるように
+    li tab / shift + tab でページ送り・戻し
+
++slide_page_with_link('2時間ぐらいで実装してみた', 'http://github.com/denari/css_slide')
+  p.
+    denari/css_slide
+
++slide_page('cssスライド所感')
+  ul
+    li 本当にムダでメリットがない
+    li 万が一フォーカスが外れるとページのめくり直し
+    li html / cssを変態的に使うと変なものが生まれるんだなあ
+
++slide_section_title_page('まとめ')
+
++slide_section_title_page('CSSは奥が深いのでもっとやっていきたい')
 
 //- ブラウザで迂闊にクリックした時にネタバレを阻止する用のページ
 +slide_page('')
