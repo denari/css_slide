@@ -1,0 +1,42 @@
+mixin slide_page(title)
+  a(href='#')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper
+        h1= title
+        .content
+          if block
+            block
+
+mixin slide_page_with_link(title, url)
+  a(href=url target='_blank')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper
+        h1= title
+        .content
+          if block
+            block
+
+mixin front_page
+  a(href='#')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper.front
+        h1 みんな大好きCSS
+        p by denari
+
++front_page
+
++slide_page('タイトル')
+  p
+    | これはサンプルページです
+  ul
+    li 一つ目
+    li 二つ目
+  pre
+    code.html
+      | hello
+
+//- ブラウザで迂闊にクリックした時にネタバレを阻止する用のページ
++slide_page('')
