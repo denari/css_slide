@@ -12,7 +12,7 @@ mixin slide_page_with_link(title, url)
   a(href=url target='_blank')
     span.zero .
     .page(class=attributes.class)
-      .wrapper
+      .wrapper.link
         h1= title
         .content
           if block
@@ -245,6 +245,7 @@ mixin front_page
   ul
     li anchorの子要素として各ページを配置
     li anchorの子とはいえ、position: fixedで全画面に広がるように
+    li :focus 以外のページの不透明度をゼロに
     li tab / shift + tab でページ送り・戻し
 
 +slide_page_with_link('2時間ぐらいで実装してみた', 'http://github.com/denari/css_slide')
