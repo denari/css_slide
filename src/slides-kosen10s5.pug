@@ -1,0 +1,133 @@
+mixin slide_page(title)
+  a(href='#')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper
+        h1= title
+        .content
+          if block
+            block
+
+mixin slide_page_with_link(title, url)
+  a(href=url target='_blank')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper.link
+        h1= title
+        .content
+          if block
+            block
+
+mixin slide_section_title_page(title)
+  a(href='#')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper.section-title
+        h1= title
+
+
+mixin slide_image_page(img_src,width)
+  a(href='#')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper.section-title.image
+        img(src=img_src width=width)
+
+mixin front_page
+  a(href='#')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper.front
+        h1 みんな大好きCSS
+        p by denari (ナルシスト)
+
+//- ここからスライド
+
++slide_image_page('img/delogo.png','300px')
+
++slide_page('denari01')
+  p
+    img(src='img/icon2.png' width='200px')
+  p 開発とデザインと自分が好き
+
++slide_page('一応報告')
+  p
+    img(src='img/jigjp.png' width='200px')
+  p jig.jpという会社から
+
++slide_page('FULLERにいきました')
+  p
+    img(src='img/jigjp.png' width='200px')
+    | 　→　
+    img(src='img/fuller.png' width='200px')
+  p エンジニア → デザイナーへ
+
++slide_page('')
+
++slide_section_title_page('僕について')
++slide_section_title_page('明石高専出身')
++slide_section_title_page('kosen10sではよくイベント運営してる')
++slide_section_title_page('ナルシスト')
+
++slide_page('')
+
++slide_section_title_page('Development')
++slide_section_title_page('iOS')
++slide_section_title_page('Web server')
++slide_section_title_page('Web front')
++slide_section_title_page('Wordpress')
++slide_section_title_page('Docker / Vagrant')
+
++slide_page('')
+
++slide_section_title_page('Design')
++slide_image_page('img/LT05.png','100%')
++slide_image_page('img/100conf.png','100%')
++slide_image_page('img/pyconjp.png','100%')
++slide_image_page('img/meganehack.png','100%')
++slide_image_page('img/appapenote.png','100%')
+
++slide_page('')
+
++slide_section_title_page('このままでは 終われないので')
+
++slide_section_title_page('最近の小ネタ')
++slide_section_title_page('社内勉強会で発表したネタ')
+
++slide_section_title_page('This slide!!!')
+
++slide_page_with_link('動作原理', 'http://denari01.hatenablog.com/')
+  p.
+    そもそも普通のWebサイトでも、tabキーを押すとリンク(anchor)にフォーカスされる。
+  p.
+    そして、押し続けると、次のanchor次のanchor…とフォーカスが移る。
+  p.
+    フォーカスされているanchorには擬似クラス :focus がつく
+
++slide_page('発表前日20時の僕の思いつき')
+  p.
+    これってもしかして、CSSだけでスライドの遷移ができるのでは??
+  ul
+    li anchorの子要素として各ページを配置
+    li anchorの子とはいえ、position: fixedで全画面に広がるように
+    li :focus 以外のページの不透明度をゼロに
+    li tab / shift + tab でページ送り・戻し
+
++slide_page_with_link('2時間ぐらいで実装してみた', 'http://github.com/denari/css_slide')
+  p.
+    denari/css_slide
+
++slide_page('cssスライド所感')
+  ul
+    li 本当にムダでメリットがない
+    li 万が一フォーカスが外れるとページのめくり直し
+    li css3 の transition プロパティは神
+    li html / cssを変態的に使うと変なものが生まれるんだなあ
+
++slide_section_title_page('まとめ')
+
++slide_section_title_page('JSさんブラウザで動いてくれてありがとう')
++slide_section_title_page('おしまい')
+
+//- ブラウザで迂闊にクリックした時にネタバレを阻止する用のページ
++slide_page('')
