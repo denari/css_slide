@@ -117,7 +117,7 @@ a:focus .page {
     justify-content: center;
     align-items: center; }
   .wrapper.link {
-    border: 1px solid white; }
+    border: 1px solid black; }
   .wrapper ul {
     margin: 0 0 20px 30px; }
   .wrapper li {
