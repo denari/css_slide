@@ -115,6 +115,9 @@ a:focus .page {
   h1 {
     color: #2898c5 !important;
   }
+  &.link {
+    border: 1px solid #000000;
+  }
 }
 .wrapper {
   background: rgba(0,0,0,0.7);
@@ -134,7 +137,7 @@ a:focus .page {
     align-items: center;
   }
   &.link {
-    border: 1px solid black;
+    border: 1px solid white;
   }
   ul {
     margin: 0 0 20px 30px;

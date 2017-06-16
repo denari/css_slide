@@ -99,6 +99,8 @@ a:focus .page {
   color: #333; }
   .riot .wrapper h1 {
     color: #2898c5 !important; }
+  .riot .wrapper.link {
+    border: 1px solid #000000; }
 
 .wrapper {
   background: rgba(0, 0, 0, 0.7);
@@ -117,7 +119,7 @@ a:focus .page {
     justify-content: center;
     align-items: center; }
   .wrapper.link {
-    border: 1px solid black; }
+    border: 1px solid white; }
   .wrapper ul {
     margin: 0 0 20px 30px; }
   .wrapper li {
