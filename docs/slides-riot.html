@@ -1,0 +1,40 @@
+<a href="#"><span class="zero">.</span><div class="page"><div class="wrapper front"><h1>Riot.js 所感</h1><p>by denari01</p></div></div></a><a href="#"><span class="zero">.</span><div class="page"><div class="wrapper"><h1>誰</h1><div class="content"><p><img src="img/icon3.jpg" width="200px"/></p><p>でなり (@denari01)</p></div></div></div></a><a href="#"><span class="zero">.</span><div class="page"><div class="wrapper"><h1>ゆるふわデザイナー</h1><div class="content"><ul><li>フラー株式会社 デザイナー</li><li>合同会社ヘマタイト リードデザイナ</li><li>HxS デザイナ兼技術者</li><li>PyCon JP デザイナー</li></ul></div></div></div></a><a href="http://github.com/denari/css_slide" target="_blank"><span class="zero">.</span><div class="page"><div class="wrapper link"><h1>プチ自慢</h1><div class="content"><p>このスライドはページ遷移にはJSを使っていません。</p><p>つかっているのは、syntax hightlightのみ</p><p>denari/css_slide</p></div></div></div></a><a href="#"><span class="zero">.</span><div class="page"><div class="wrapper section-title"><h1>Riot.jsの話</h1></div></div></a><a href="http://riotjs.com/ja/" target="_blank"><span class="zero">.</span><div class="page"><div class="wrapper link"><h1>基本データ</h1><div class="content"><dl><dt>読み方</dt><dd>ライオットジェイエス</dd><dt>URL</dt><dd>http://riotjs.com/ja/</dd><dt>作者</dt><dd>GianlucaGuarini http://github.com/GianlucaGuarini/</dd><dt>リリースされた日</dt><dd>2014.04.15</dd><dt>ライセンス</dt><dd>MIT</dd><dt>特徴</dt><dd>viewだけをもつ。軽い。独自のtagファイルなるものがある。</dd><dt>フルスタックか否か</dt><dd>フルスタックではない(モデルを持たない)</dd></dl></div></div></div></a><a href="http://denari.link/report-study-02/" target="_blank"><span class="zero">.</span><div class="page"><div class="wrapper link"><h1>利用した事例</h1><div class="content"><p>10ヶ月ぐらいまえに作りかけた資料</p></div></div></div></a><a href="https://github.com/denari/report-study-02" target="_blank"><span class="zero">.</span><div class="page"><div class="wrapper link"><h1>最大の特徴 : カスタムタグ</h1><div class="content"><ul><li>.tagファイル</li><li>HTMLのタグを定義する感じのファイル</li><li>tagファイルの中にjs / cssまで書く</li></ul><pre><code class="html">require('./sector')
+&lt;app&gt;
+  &lt;sector title='とりあえず概要'&gt;
+    この資料に関する説明です
+  &lt;/sector&gt;
+&lt;/app&gt;
+</code></pre><pre><code class="html">&lt;sector&gt;
+  &lt;h2&gt;{ title }&lt;/h2&gt;
+  &lt;p&gt;{ message }&lt;/p&gt;
+  &lt;small&gt;
+    &lt;yield /&gt;
+  &lt;/small&gt;
+  this.title = opts.title
+  &lt;style media="screen"&gt;
+    sector {
+      display: block;
+      padding: 50px 0 30px;
+    }
+
+    h2 {
+      font-size: 50px;
+      margin-bottom: 0;
+    }
+  &lt;/style&gt;
+  &lt;script&gt;
+    this.message = 'Hello Riot'
+  &lt;/script&gt;
+&lt;/sector&gt;
+</code></pre></div></div></div></a><a href="#"><span class="zero">.</span><div class="page"><div class="wrapper"><h1>他の機能</h1><div class="content"><ul><li>eachもちゃんとある</li><li>routerもちゃんとある</li><li>obserbableもriotの中にある</li></ul></div></div></div></a><a href="#"><span class="zero">.</span><div class="page"><div class="wrapper"><h1>好きなところ</h1><div class="content"><ul><li>html / css / jsがそのままダラダラ書ける</li><li>tagファイルにタグを定義する感じが非常によい</li><li>css_modulesチックなことを考えなくても、タグごとに名前空間が別れる</li></ul></div></div></div></a><a href="#"><span class="zero">.</span><div class="page"><div class="wrapper"><h1>ちょっとなあってところ</h1><div class="content"><ul><li>どうしても大規模な設計に向かない</li><li>タグの継承の概念がない(サブクラス的なタグが作りたい)</li><li>obserbableの書き方がいつもとちがうし違和感</li></ul></div></div></div></a><a href="#"><span class="zero">.</span><div class="page"><div class="wrapper"><h1>普通のobserbable</h1><div class="content"><p>いつもと違うなあ…</p><pre><code class="js">var foo = riot.observable();
+foo.on('myEvent', function(data) {
+  // your code here
+});</code></pre><pre><code class="js">foo.trigger('myEvent', { param: 1 });
+</code></pre></div></div></div></a><a href="#"><span class="zero">.</span><div class="page"><div class="wrapper"><h1>オブジェクトでtriggerを使いたい時</h1><div class="content"><p>宣言部分がなあ…</p><pre> <code class="js">function Foo() {
+  riot.observable(this)
+  this.on('myEvent', function() {
+    // your code here
+  })
+}</code></pre><pre><code class="js">var car = new Car();
+car.trigger('myEvent');
+</code></pre></div></div></div></a><a href="#"><span class="zero">.</span><div class="page"><div class="wrapper section-title"><h1>おしまい</h1></div></div></a><a href="#"><span class="zero">.</span><div class="page"><div class="wrapper"><h1></h1><div class="content"></div></div></div></a>

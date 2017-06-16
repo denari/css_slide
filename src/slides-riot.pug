@@ -1,0 +1,175 @@
+mixin slide_page(title)
+  a(href='#')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper
+        h1= title
+        .content
+          if block
+            block
+
+mixin slide_page_with_link(title, url)
+  a(href=url target='_blank')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper.link
+        h1= title
+        .content
+          if block
+            block
+
+mixin slide_section_title_page(title)
+  a(href='#')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper.section-title
+        h1= title
+
+
+mixin slide_image_page(img_src,width)
+  a(href='#')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper.section-title.image
+        img(src=img_src width=width)
+
+mixin front_page
+  a(href='#')
+    span.zero .
+    .page(class=attributes.class)
+      .wrapper.front
+        h1 Riot.js 所感
+        p by denari01
+
+//- ここからスライド
+
++front_page()
+
++slide_page('誰')
+  p
+    img(src='img/icon3.jpg' width='200px')
+  p でなり (@denari01)
+
++slide_page('ゆるふわデザイナー')
+  ul
+    li フラー株式会社 デザイナー
+    li 合同会社ヘマタイト リードデザイナ
+    li HxS デザイナ兼技術者
+    li PyCon JP デザイナー
+
++slide_page_with_link('プチ自慢', 'http://github.com/denari/css_slide')
+  p このスライドはページ遷移にはJSを使っていません。
+  p つかっているのは、syntax hightlightのみ
+  p denari/css_slide
+  
++slide_section_title_page('Riot.jsの話')
+
++slide_page_with_link('基本データ','http://riotjs.com/ja/')
+  dl
+    dt 読み方
+    dd ライオットジェイエス
+    dt URL
+    dd http://riotjs.com/ja/
+    dt 作者
+    dd GianlucaGuarini http://github.com/GianlucaGuarini/
+    dt リリースされた日
+    dd 2014.04.15
+    dt ライセンス
+    dd MIT
+    dt 特徴
+    dd viewだけをもつ。軽い。独自のtagファイルなるものがある。
+    dt フルスタックか否か
+    dd フルスタックではない(モデルを持たない)
+
++slide_page_with_link('利用した事例','http://denari.link/report-study-02/')
+  p 10ヶ月ぐらいまえに作りかけた資料
+
++slide_page_with_link('最大の特徴 : カスタムタグ', 'https://github.com/denari/report-study-02')
+  ul
+    li .tagファイル
+    li HTMLのタグを定義する感じのファイル
+    li tagファイルの中にjs / cssまで書く
+    
+  pre
+    code.html.
+      require('./sector')
+      &lt;app&gt;
+        &lt;sector title='とりあえず概要'&gt;
+          この資料に関する説明です
+        &lt;/sector&gt;
+      &lt;/app&gt;
+  
+  pre
+    code.html.
+      &lt;sector&gt;
+        &lt;h2&gt;{ title }&lt;/h2&gt;
+        &lt;p&gt;{ message }&lt;/p&gt;
+        &lt;small&gt;
+          &lt;yield /&gt;
+        &lt;/small&gt;
+        this.title = opts.title
+        &lt;style media="screen"&gt;
+          sector {
+            display: block;
+            padding: 50px 0 30px;
+          }
+
+          h2 {
+            font-size: 50px;
+            margin-bottom: 0;
+          }
+        &lt;/style&gt;
+        &lt;script&gt;
+          this.message = 'Hello Riot'
+        &lt;/script&gt;
+      &lt;/sector&gt;
+      
++slide_page('他の機能')
+  ul
+    li eachもちゃんとある
+    li routerもちゃんとある
+    li obserbableもriotの中にある
+
++slide_page('好きなところ')
+  ul
+    li html / css / jsがそのままダラダラ書ける
+    li tagファイルにタグを定義する感じが非常によい
+    li css_modulesチックなことを考えなくても、タグごとに名前空間が別れる
+    
++slide_page('ちょっとなあってところ')
+  ul
+    li どうしても大規模な設計に向かない
+    li タグの継承の概念がない(サブクラス的なタグが作りたい)
+    li obserbableの書き方がいつもとちがうし違和感
+
++slide_page('普通のobserbable')
+  p いつもと違うなあ…
+  pre
+    code.js.
+      var foo = riot.observable();
+      foo.on('myEvent', function(data) {
+        // your code here
+      });
+  pre
+    code.js.
+      foo.trigger('myEvent', { param: 1 });
+
++slide_page('オブジェクトでtriggerを使いたい時')
+  p 宣言部分がなあ…
+  pre 
+    code.js.
+      function Foo() {
+        riot.observable(this)
+        this.on('myEvent', function() {
+          // your code here
+        })
+      }
+  pre
+    code.js.
+      var car = new Car();
+      car.trigger('myEvent');
+      
++slide_section_title_page('おしまい')
+
+//- ブラウザで迂闊にクリックした時にネタバレを阻止する用のページ
++slide_page('')
