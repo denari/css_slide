@@ -53,11 +53,12 @@ body {
     content          : "";
     background-image : url('../img/denari.link.png');
     background-size  : cover;
+    background-position: center center;
     display          : block;
     position         : fixed;
     z-index          : -1;
-    top              : -20px;
-    left             : -20px;
+    top              : -1%;
+    left             : -1%;
     height           : 102%;
     width            : 102%;
     -webkit-filter   : blur(5px);
