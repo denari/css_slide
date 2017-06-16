@@ -37,4 +37,25 @@ foo.on('myEvent', function(data) {
   })
 }</code></pre><pre><code class="js">var car = new Car();
 car.trigger('myEvent');
+</code></pre></div></div></div></a><a href="https://github.com/riot/cli" target="_blank"><span class="zero">.</span><div class="page"><div class="wrapper link"><h1>riot-cli</h1><div class="content">   <pre><code>$ riot --new hoge
+
+&lt;hoge&gt;
+  &lt;p&gt;Hi { message() }&lt;/p&gt;
+  &lt;script&gt;
+    message() {
+      return 'there'
+    }
+  &lt;/script&gt;
+
+  &lt;style&gt;
+    :scope p {
+      color: #000;
+    }
+  &lt;/style&gt;
+&lt;/hoge&gt;
+
+hoge.tag created correctly!
+</code></pre><pre><code>$ riot hoge.tag
+hoge.tag -&gt; hoge.js
+
 </code></pre></div></div></div></a><a href="#"><span class="zero">.</span><div class="page"><div class="wrapper section-title"><h1>おしまい</h1></div></div></a><a href="#"><span class="zero">.</span><div class="page"><div class="wrapper"><h1></h1><div class="content"></div></div></div></a>

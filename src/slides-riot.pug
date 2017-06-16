@@ -172,6 +172,34 @@ mixin front_page
       var car = new Car();
       car.trigger('myEvent');
       
++slide_page_with_link('riot-cli', 'https://github.com/riot/cli')    
+  pre
+    code.
+      $ riot --new hoge
+      
+      &lt;hoge&gt;
+        &lt;p&gt;Hi { message() }&lt;/p&gt;
+        &lt;script&gt;
+          message() {
+            return 'there'
+          }
+        &lt;/script&gt;
+
+        &lt;style&gt;
+          :scope p {
+            color: #000;
+          }
+        &lt;/style&gt;
+      &lt;/hoge&gt;
+      
+      hoge.tag created correctly!
+      
+  pre
+    code.
+      $ riot hoge.tag
+      hoge.tag -&gt; hoge.js
+
+      
 +slide_section_title_page('おしまい')
 
 //- ブラウザで迂闊にクリックした時にネタバレを阻止する用のページ
